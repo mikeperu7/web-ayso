@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { Titillium_Web } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const titilliumWeb = Titillium_Web({
-  variable: "--font-titillium",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["200", "300", "400", "600", "700", "900"],
 });
 
 export const metadata: Metadata = {
@@ -21,7 +20,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${titilliumWeb.variable} h-full antialiased`}
+      className={`${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>

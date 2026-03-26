@@ -42,20 +42,19 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-semibold text-brand-slate hover:text-brand-blue transition-colors"
+                className="text-sm font-medium text-brand-slate hover:text-brand-blue transition-colors"
               >
                 {link.name}
               </Link>
             ))}
             <Link
               href="#contacto"
-              className="bg-brand-blue text-white px-6 py-2.5 rounded-sm text-sm font-bold hover:bg-brand-blue/90 transition-all shadow-md active:scale-95"
+              className="bg-brand-blue text-white px-6 py-2.5 rounded-sm text-sm font-bold tracking-wide hover:bg-brand-blue/90 transition-all shadow-md active:scale-95"
             >
               Solicitar Cotización
             </Link>
@@ -82,7 +81,7 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block px-3 py-3 text-base font-semibold text-brand-slate hover:bg-zinc-50 hover:text-brand-blue rounded-md transition-all"
+                className="block px-3 py-3 text-base font-medium text-brand-slate hover:bg-zinc-50 hover:text-brand-blue rounded-md transition-all"
               >
                 {link.name}
               </Link>
@@ -91,7 +90,7 @@ export default function Navbar() {
               <Link
                 href="#contacto"
                 onClick={() => setIsOpen(false)}
-                className="block w-full bg-brand-blue text-white text-center px-6 py-3 rounded-sm text-sm font-bold shadow-lg"
+                className="block w-full bg-brand-blue text-white text-center px-6 py-3 rounded-sm text-sm font-bold tracking-wide shadow-lg"
               >
                 Solicitar Cotización
               </Link>

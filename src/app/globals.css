@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-titillium);
+  --font-sans: var(--font-inter);
   
-  /* Paleta Primaria */
+  /* Color Palette */
   --color-brand-blue: #006489;
   --color-brand-green: #438727;
   --color-brand-orange: #BB4A05;
   --color-brand-slate: #495669;
 
-  /* Paleta Secundaria */
+  /* Secondary Palette */
   --color-brand-dark: #2B3036;
   --color-brand-gold: #B4975A;
   --color-brand-silver: #8A8D8F;

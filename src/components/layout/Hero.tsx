@@ -16,7 +16,7 @@ export default function Hero() {
               Cumplimiento Normativo & Sostenibilidad
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-brand-dark leading-[1.1] tracking-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-brand-dark leading-[1.1] tracking-tight">
               Consultoría y Asesoría en <span className="text-brand-blue">Ambiente</span> & <span className="text-brand-orange text-shadow-sm">Seguridad Ocupacional</span>.
             </h1>
             
@@ -27,7 +27,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-center gap-4 pt-4 justify-center lg:justify-start">
               <Link 
                 href="#contacto" 
-                className="w-full sm:w-auto bg-brand-orange text-white px-8 py-4 rounded-sm font-black text-lg shadow-xl hover:bg-brand-orange/90 transition-all flex items-center justify-center gap-2 group shadow-brand-orange/20"
+                className="w-full sm:w-auto bg-brand-orange text-white px-8 py-4 rounded-sm font-bold tracking-wide text-lg shadow-xl hover:bg-brand-orange/90 transition-all flex items-center justify-center gap-2 group shadow-brand-orange/20"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -35,7 +35,7 @@ export default function Hero() {
               
               <Link 
                 href="#" 
-                className="w-full sm:w-auto border-2 border-brand-blue text-brand-blue px-8 py-4 rounded-sm font-black text-lg hover:bg-brand-blue hover:text-white transition-all flex items-center justify-center gap-2"
+                className="w-full sm:w-auto border-2 border-brand-blue text-brand-blue px-8 py-4 rounded-sm font-bold tracking-wide text-lg hover:bg-brand-blue hover:text-white transition-all flex items-center justify-center gap-2"
               >
                 <Download size={20} />
                 Descargar Brochure
