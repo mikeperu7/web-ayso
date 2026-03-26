@@ -13,6 +13,17 @@
   --color-brand-dark: #2B3036;
   --color-brand-gold: #B4975A;
   --color-brand-silver: #8A8D8F;
+
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 :root {

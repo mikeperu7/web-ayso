@@ -1,5 +1,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/layout/Hero";
+import TrustBar from "@/components/layout/TrustBar";
+import ValuePillars from "@/components/layout/ValuePillars";
 
 export default function Home() {
   return (
@@ -7,10 +9,8 @@ export default function Home() {
       <Navbar />
       <main className="flex min-h-screen flex-col">
         <Hero />
-        {/* Placeholder for future sections */}
-        <section className="bg-brand-dark py-20 text-center">
-          <p className="text-white/50 text-sm tracking-widest uppercase font-bold">Continuará con Clientes y Servicios...</p>
-        </section>
+        <TrustBar />
+        <ValuePillars />
       </main>
     </>
   );
