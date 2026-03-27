@@ -23,7 +23,7 @@ export default function RootLayout({
       lang="es"
       className={`${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">
+      <body className="min-h-full flex flex-col font-sans overflow-x-hidden">
         {children}
         <FloatingWhatsApp />
       </body>

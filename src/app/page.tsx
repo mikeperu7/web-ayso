@@ -8,9 +8,9 @@ import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   return (
-    <>
+    <div className="overflow-x-hidden w-full">
       <Navbar />
-      <main className="flex min-h-screen flex-col">
+      <main className="flex min-h-screen flex-col overflow-x-hidden">
         <Hero />
         <TrustBar />
         <ValuePillars />
@@ -18,6 +18,6 @@ export default function Home() {
         <ContactSection />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
