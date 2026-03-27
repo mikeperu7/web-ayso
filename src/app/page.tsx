@@ -2,6 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/layout/Hero";
 import TrustBar from "@/components/layout/TrustBar";
 import ValuePillars from "@/components/layout/ValuePillars";
+import ServicesCatalog from "@/components/layout/ServicesCatalog";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         <Hero />
         <TrustBar />
         <ValuePillars />
+        <ServicesCatalog />
       </main>
     </>
   );
