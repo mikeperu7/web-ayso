@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, Phone, Mail } from "lucide-react";
 
 const navLinks = [
@@ -37,8 +38,14 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex flex-col">
-              <span className="text-2xl font-black italic tracking-tighter text-brand-blue leading-none">A&SO</span>
-              <span className="text-[10px] uppercase font-bold tracking-widest text-brand-slate">Consultoría & Asesoría</span>
+              <Image 
+                src="/images/logo-ayso-processed.png" 
+                alt="A&SO Logo" 
+                width={140} 
+                height={48} 
+                className="object-contain" 
+                priority 
+              />
             </Link>
           </div>
 

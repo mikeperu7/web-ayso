@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -11,12 +12,13 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="md:col-span-2 space-y-6">
             <Link href="/" className="inline-block">
-              <span className="text-3xl font-black italic tracking-tighter text-white leading-none block">
-                A&SO
-              </span>
-              <span className="text-[11px] uppercase font-bold tracking-widest text-brand-orange">
-                Consultoría & Asesoría
-              </span>
+              <Image 
+                src="/images/logo-ayso-blanco.png" 
+                alt="A&SO Logo" 
+                width={160} 
+                height={55} 
+                className="object-contain mb-2" 
+              />
             </Link>
             <p className="text-sm text-zinc-400 font-medium max-w-sm leading-relaxed">
               Consultora ambiental experta en ingeniería y servicios ambientales. Optimizamos recursos con competencia, confiabilidad y agilidad para el éxito de su proyecto.

@@ -56,3 +56,17 @@ Decisión: Separar el contenido estricto (04-content.md) del código y del dise�
 Por qué funciona: En 2026, el mayor error al usar agentes de IA para frontend es pedirles que "diseñen, programen e inventen el texto" al mismo tiempo. Al darle los archivos 03-design-system.md y 04-content.md ya listos, limitamos su trabajo exclusivamente a escribir código limpio en React/Next.js, eliminando las alucinaciones de texto.
 
 
+
+Fecha: 26 de Marzo de 2026.
+
+Decisión: Uso de "Cards" (Tarjetas) interactivas para el catálogo de servicios.
+
+Por qué funciona: En UX/UI, agrupar información en tarjetas con íconos reduce la "carga cognitiva". El cerebro del usuario procesa la imagen (el ícono) en milisegundos y sabe de qué trata la sección antes de leer una sola palabra. Es la forma más rápida de comunicar valor técnico.
+
+
+
+Fecha: 26 de Marzo de 2026.
+
+Decisión: Separar la información de contacto y el formulario en la parte inferior, cerrando con un Footer oscuro.
+
+Por qué funciona: En CRO (Optimización de Tasa de Conversión), colocar el formulario al final del recorrido del usuario funciona porque le pides sus datos después de haberle demostrado valor (con los servicios y los clientes). El Footer oscuro crea un "cierre visual" que le indica al cerebro que la página ha terminado.
