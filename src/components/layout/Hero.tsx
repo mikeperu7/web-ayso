@@ -1,5 +1,6 @@
 import { ArrowRight, Download } from "lucide-react";
 import Link from "next/link";
+import FieldWorkCarousel from "./FieldWorkCarousel";
 
 export default function Hero() {
   return (
@@ -43,21 +44,12 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Visual Element / Placeholder for Team Photo */}
-          <div className="hidden lg:block relative">
-            <div className="aspect-[4/5] relative rounded-lg overflow-hidden shadow-2xl skew-y-2 hover:skew-y-0 transition-transform duration-700 group">
-              <div className="absolute inset-0 bg-gradient-to-tr from-brand-blue/40 to-transparent mix-blend-overlay z-10" />
-              <div className="absolute inset-0 bg-zinc-800 animate-pulse group-hover:hidden" />
-              {/* Note: User will replace with real team photo */}
-              <div className="absolute inset-0 flex items-center justify-center text-zinc-400 font-bold bg-zinc-100 flex-col gap-4">
-                 <div className="w-16 h-1 bg-brand-orange" />
-                 <span>FOTO EQUIPO TÉCNICO EN CAMPO</span>
-                 <div className="w-16 h-1 bg-brand-green" />
-              </div>
-            </div>
+          {/* Visual Element / Auto-Slider */}
+          <div className="hidden lg:block relative group">
+            <FieldWorkCarousel />
             
             {/* Floating Trust Badge */}
-            <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-lg shadow-2xl border-l-8 border-brand-orange z-20 max-w-[200px]">
+            <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-lg shadow-2xl border-l-8 border-brand-orange z-30 max-w-[200px] transition-transform duration-500 group-hover:-translate-y-2">
               <div className="text-brand-orange font-black text-3xl leading-none">0</div>
               <div className="text-brand-dark font-bold text-sm uppercase leading-tight mt-1">Accidentes Laborales Reportados</div>
             </div>
