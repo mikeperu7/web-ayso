@@ -14,7 +14,7 @@ export async function POST(request: Request) {
     }
 
     // 1. Base de Datos (Supabase)
-    const { error: dbError } = await supabase
+    const { data: dbData, error: dbError } = await supabase
       .from("contact_messages")
       .insert([
         {
@@ -23,19 +23,22 @@ export async function POST(request: Request) {
           email: email,
           mensaje: message,
         },
-      ]);
+      ])
+      .select();
 
     if (dbError) {
       console.error("Error al insertar en Supabase:", dbError);
       return NextResponse.json({ success: false, error: "Error guardando en base de datos" }, { status: 500 });
     }
+    
+    console.log("Supabase API - Inserción exitosa:", dbData);
 
     // 2. Notificación por Email (Resend)
     if (process.env.RESEND_API_KEY) {
       try {
-        await resend.emails.send({
-          from: "Notificaciones A&SO <onboarding@resend.dev>", // Cambiar al dominio verificado cuando exista
-          to: ["mich20.18@gmail.com", "mich20.18@gmail.com"], // Se envió doble vez como el prompt indicó
+        const resendResponse = await resend.emails.send({
+          from: "A&SO Landing Page <onboarding@resend.dev>",
+          to: "mich20.18@gmail.com",
           subject: `Nuevo Prospecto Web: ${name} ${company ? `- ${company}` : ''}`,
           html: `
             <h2>Nuevo Mensaje de Contacto (Landing Page)</h2>
@@ -48,6 +51,8 @@ export async function POST(request: Request) {
             </blockquote>
           `,
         });
+        
+        console.log("Resend API - Email enviado exitosamente:", resendResponse);
       } catch (emailError) {
         console.error("Error enviando email con Resend:", emailError);
         // We log but don't fail the request completely if email fails
