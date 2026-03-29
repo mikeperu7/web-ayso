@@ -9,8 +9,29 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "AYSO SAC - Ambiente & Seguridad Ocupacional",
-  description: "Consultoría y Asesoría en Ambiente & Seguridad Ocupacional. Optimizamos tus recursos con respuestas ágiles y especializadas.",
+  title: "AYSO SAC - Ambiente & Seguridad Ocupacional | Consultoría y Asesoría",
+  description: "Optimizamos tus recursos con respuestas ágiles y soluciones integrales en Gestión Ambiental, Seguridad Ocupacional y Capacitaciones en Ate, Lima.",
+  openGraph: {
+    title: "AYSO SAC - Tu Socio en Seguridad Ocupacional y Gestión Ambiental",
+    description: "Optimizamos tus recursos con respuestas ágiles y soluciones integrales en Gestión Ambiental, Seguridad Ocupacional y Capacitaciones en Ate, Lima.",
+    url: "https://web-ayso.vercel.app", // REEMPLAZAR POR TU URL FINAL SI ES OTRA
+    siteName: "AYSO SAC",
+    locale: "es_PE",
+    type: "website",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "AYSO SAC - Consultoría en Ambiente y Seguridad",
+      },
+    ],
+  },
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({
