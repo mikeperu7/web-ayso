@@ -28,19 +28,20 @@ export default function ContactSection() {
     setIsSuccess(false);
 
     try {
-      // Supabase Insert to contact_messages table
-      const { error } = await supabase
-        .from("contact_messages")
-        .insert([
-          {
-            nombre: formData.name,
-            empresa: formData.company,
-            email: formData.email,
-            mensaje: formData.message
-          }
-        ]);
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-      if (error) throw error;
+      if (!response.ok) {
+        throw new Error("Error HTTP de servidor al procesar el mensaje.");
+      }
+
+      const data = await response.json();
+      if (!data.success) {
+        throw new Error(data.error || "Error al enviar el mensaje.");
+      }
       
       setIsSuccess(true);
       setFormData({ name: "", company: "", email: "", message: "" }); // Clear form

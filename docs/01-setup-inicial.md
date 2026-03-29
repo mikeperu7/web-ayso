@@ -70,3 +70,23 @@ Fecha: 26 de Marzo de 2026.
 Decisión: Separar la información de contacto y el formulario en la parte inferior, cerrando con un Footer oscuro.
 
 Por qué funciona: En CRO (Optimización de Tasa de Conversión), colocar el formulario al final del recorrido del usuario funciona porque le pides sus datos después de haberle demostrado valor (con los servicios y los clientes). El Footer oscuro crea un "cierre visual" que le indica al cerebro que la página ha terminado.
+
+
+
+Fecha: 26 de Marzo de 2026.
+
+Hito: Finalización del Sprint 1 (UI/UX Estático).
+
+La Fórmula del Éxito con IA: 1.  Reglas Claras: Usar constitution.md para fijar el stack técnico (Next.js, Tailwind, TypeScript).
+2.  Límites Visuales: Usar 03-design-system.md para evitar alucinaciones de diseño y forzar la paleta de colores del cliente.
+3.  Límites de Texto: Usar 04-content.md para inyectar copy real (brochure) y evitar textos genéricos de la IA.
+4.  Desarrollo Iterativo: Construir la página componente por componente (Hero -> TrustBar -> Servicios -> Footer), nunca todo de golpe.
+5.  Despliegue Continuo: Conectar Vercel desde el día 1 para tener feedback en tiempo real.
+
+
+
+Fecha: 27 de Marzo de 2026.
+
+Decisión: Implementar un "Falso Chatbot" (Widget de WhatsApp interactivo) en lugar de un chatbot real con IA.
+
+Por qué funciona: Satisface el requerimiento del cliente de tener "respuestas automáticas", pero elimina la fricción técnica del backend. En ventas B2B, acortar el camino hacia una conversación humana por WhatsApp aumenta la tasa de cierre. Redirigir con un mensaje pre-llenado da contexto inmediato al vendedor de A&SO.
