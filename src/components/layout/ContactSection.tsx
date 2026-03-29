@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { MapPin, Phone, Mail, Send, CheckCircle2 } from "lucide-react";
+import { MapPin, Phone, Mail, Send, CheckCircle2, MessageCircle } from "lucide-react";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -15,6 +15,7 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [whatsappUrl, setWhatsappUrl] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
@@ -43,13 +44,15 @@ export default function ContactSection() {
         throw new Error(data.error || "Error al enviar el mensaje.");
       }
       
+      // Preparar URL dinámica de WhatsApp
+      const waNumber = "51981300439";
+      const waText = `Hola A&SO, soy ${formData.name}${formData.company ? ` de ${formData.company}` : ''}. Acabo de dejar un requerimiento en su web: ${formData.message}`;
+      setWhatsappUrl(`https://wa.me/${waNumber}?text=${encodeURIComponent(waText)}`);
+
       setIsSuccess(true);
       setFormData({ name: "", company: "", email: "", message: "" }); // Clear form
       
-      // Auto-hide success message after 5 seconds
-      setTimeout(() => {
-        setIsSuccess(false);
-      }, 5000);
+      // Nota: Hemos retirado el timeout de 5 segundos para que el usuario pueda interactuar con el botón de WhatsApp temporalmente indefinido.
 
     } catch (error: any) {
       console.error("Error al enviar el formulario:", error);
@@ -130,17 +133,38 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Right Column: Contact Form */}
+          {/* Right Column: Contact Form / Dynamic Success UI */}
           <div className="bg-white rounded-2xl p-8 border border-zinc-100 shadow-xl shadow-zinc-200/50">
             <h4 className="text-xl font-bold text-brand-dark mb-6">Envíanos un mensaje</h4>
             
             {isSuccess ? (
-              <div className="bg-brand-green/10 border border-brand-green text-brand-green p-6 rounded-xl flex flex-col items-center justify-center text-center space-y-3 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <CheckCircle2 size={48} strokeWidth={1.5} />
-                <div>
-                  <h5 className="font-bold text-lg">¡Gracias! Hemos recibido tu mensaje.</h5>
-                  <p className="text-sm mt-1 opacity-90">Un asesor de A&SO se comunicará contigo al correo proporcionado en breve.</p>
+              <div className="bg-brand-green/5 border border-brand-green/20 p-8 rounded-xl flex flex-col items-center justify-center text-center space-y-6 animate-in fade-in zoom-in-95 duration-500">
+                <div className="w-16 h-16 bg-brand-green/20 text-brand-green rounded-full flex items-center justify-center">
+                  <CheckCircle2 size={36} strokeWidth={2} />
                 </div>
+                <div>
+                  <h5 className="font-extrabold text-2xl text-brand-dark mb-3">¡Requerimiento recibido!</h5>
+                  <p className="text-brand-slate font-medium leading-relaxed">
+                    Hemos guardado tus datos y te contactaremos por correo. Si deseas atención inmediata, haz clic abajo para enviarnos un WhatsApp directo al equipo de A&SO.
+                  </p>
+                </div>
+                <div className="w-full pt-2">
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-[#25D366] text-white py-4 px-6 rounded-md font-bold tracking-wide shadow-lg shadow-[#25D366]/30 hover:bg-[#20bd5a] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 group"
+                  >
+                    <MessageCircle size={24} className="group-hover:scale-110 transition-transform" />
+                    Enviar WhatsApp a Soporte
+                  </a>
+                </div>
+                <button 
+                  onClick={() => setIsSuccess(false)}
+                  className="text-sm font-semibold text-brand-slate hover:text-brand-blue underline underline-offset-4 transition-colors mt-2"
+                >
+                  Enviar otro mensaje
+                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
