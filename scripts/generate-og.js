@@ -10,11 +10,9 @@ async function generateAssets() {
 
   try {
     // 1. Generar opengraph-image.png (1200x630)
-    // Usaremos logo-ayso-blanco.png y lo centraremos en un canvas azul corporativo
-    const logoBlancoPath = path.join(IMAGES_DIR, 'logo-ayso-blanco.png');
+    // Usaremos ayso-logo-1.jpeg (Logo a color) y lo centraremos en el canvas azul
+    const logoColorPath = path.join(IMAGES_DIR, 'ayso-logo-1.jpeg');
     
-    // Crear un fondo azul corporativo (#006489) o blanco. El usuario pidió profesional.
-    // Usaremos blanco para que el logo se vea limpio.
     await sharp({
       create: {
         width: 1200,
@@ -25,8 +23,9 @@ async function generateAssets() {
     })
     .composite([
       {
-        input: await sharp(logoBlancoPath)
-          .resize(800, 400, { fit: 'contain', background: { r: 255, g: 255, b: 255, alpha: 0 } })
+        input: await sharp(logoColorPath)
+          .resize(1000, 500, { fit: 'contain' })
+          // Opcional: Si el JPEG tiene fondo blanco/gris, podemos intentar quitarlo o dejarlo como "placa"
           .toBuffer(),
         gravity: 'center'
       }
