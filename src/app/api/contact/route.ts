@@ -36,9 +36,9 @@ export async function POST(request: Request) {
     // 2. Notificación por Email (Resend)
     if (process.env.RESEND_API_KEY) {
       try {
-        const resendResponse = await resend.emails.send({
-          from: "A&SO Landing Page <onboarding@resend.dev>",
-          to: "mich20.18@gmail.com",
+        const { data, error } = await resend.emails.send({
+          from: 'A&SO Landing Page <onboarding@resend.dev>',
+          to: ["mich20.18@gmail.com"], // 🛑 ALERTA DEV: REEMPLAZA ESTO EXACTAMENTE POR EL CORREO DUEÑO DE LA CUENTA DE RESEND 🛑
           subject: `Nuevo Prospecto Web: ${name} ${company ? `- ${company}` : ''}`,
           html: `
             <h2>Nuevo Mensaje de Contacto (Landing Page)</h2>
@@ -52,10 +52,15 @@ export async function POST(request: Request) {
           `,
         });
         
-        console.log("Resend API - Email enviado exitosamente:", resendResponse);
+        if (error) {
+          console.error("❌ ERROR GIGANTE EN RESEND AL ENVIAR EL CORREO:", error);
+          return NextResponse.json({ success: false, error: 'Fallo Resend', details: error }, { status: 500 });
+        }
+        
+        console.log("✅ Resend API - Email enviado exitosamente:", data);
       } catch (emailError) {
-        console.error("Error enviando email con Resend:", emailError);
-        // We log but don't fail the request completely if email fails
+        console.error("❌ EXCEPCIÓN TOTAL EN RESEND:", emailError);
+        return NextResponse.json({ success: false, error: 'Fallo Resend', details: emailError }, { status: 500 });
       }
     }
 
