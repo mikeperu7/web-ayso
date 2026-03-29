@@ -18,14 +18,16 @@ async function generateAssets() {
         width: 1200,
         height: 630,
         channels: 4,
-        background: { r: 0, g: 100, b: 137, alpha: 1 } // #006489 corporativo
+        background: { r: 255, g: 255, b: 255, alpha: 1 } // Blanco puro
       }
     })
     .composite([
       {
         input: await sharp(logoColorPath)
-          .resize(1000, 500, { fit: 'contain' })
-          // Opcional: Si el JPEG tiene fondo blanco/gris, podemos intentar quitarlo o dejarlo como "placa"
+          .resize(1100, 580, { 
+            fit: 'contain', 
+            background: { r: 255, g: 255, b: 255, alpha: 1 } // Evita barras negras en el redimensionado
+          })
           .toBuffer(),
         gravity: 'center'
       }
