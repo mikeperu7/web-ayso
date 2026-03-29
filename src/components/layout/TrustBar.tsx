@@ -19,7 +19,7 @@ export default function TrustBar() {
   ];
 
   return (
-    <section className="bg-zinc-50 border-y border-zinc-100 py-10 overflow-hidden flex flex-col items-center">
+    <section id="proyectos" className="bg-zinc-50 border-y border-zinc-100 py-10 overflow-hidden flex flex-col items-center scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 text-center mb-6">
         <p className="text-sm font-semibold tracking-widest text-brand-slate uppercase">
           Empresas que confían en nosotros

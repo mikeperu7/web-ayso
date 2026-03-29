@@ -33,7 +33,7 @@ const pillars = [
 
 export default function ValuePillars() {
   return (
-    <section className="py-24 bg-white">
+    <section id="nosotros" className="py-24 bg-white scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="text-sm font-bold tracking-widest text-brand-orange uppercase mb-3">

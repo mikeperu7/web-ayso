@@ -6,11 +6,11 @@ import Image from "next/image";
 import { Menu, X, Phone, Mail } from "lucide-react";
 
 const navLinks = [
-  { name: "Inicio", href: "#" },
-  { name: "Nosotros", href: "#" },
-  { name: "Servicios", href: "#" },
-  { name: "Proyectos", href: "#" },
-  { name: "Contacto", href: "#" },
+  { name: "Inicio", href: "#inicio" },
+  { name: "Nosotros", href: "#nosotros" },
+  { name: "Servicios", href: "#servicios" },
+  { name: "Proyectos", href: "#proyectos" },
+  { name: "Contacto", href: "#contacto" },
 ];
 
 export default function Navbar() {

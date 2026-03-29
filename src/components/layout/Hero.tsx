@@ -4,7 +4,7 @@ import FieldWorkCarousel from "./FieldWorkCarousel";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center pt-24 overflow-hidden bg-white">
+    <section id="inicio" className="relative min-h-[90vh] flex items-center justify-center pt-24 overflow-hidden bg-white scroll-mt-24">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-blue/5 -skew-x-12 translate-x-1/4 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-green/5 rounded-full blur-3xl pointer-events-none" />

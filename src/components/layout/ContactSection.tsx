@@ -2,7 +2,7 @@ import { MapPin, Phone, Mail, Send } from "lucide-react";
 
 export default function ContactSection() {
   return (
-    <section id="contacto" className="py-24 bg-white relative">
+    <section id="contacto" className="py-24 bg-white relative scroll-mt-24">
       {/* Decorative background element */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-zinc-50 pointer-events-none skew-x-12 translate-x-1/4 opacity-50" />
 
