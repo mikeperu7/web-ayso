@@ -1,6 +1,63 @@
-import { MapPin, Phone, Mail, Send } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { supabase } from "@/lib/supabase";
+import { MapPin, Phone, Mail, Send, CheckCircle2 } from "lucide-react";
 
 export default function ContactSection() {
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    message: ""
+  });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setErrorMsg("");
+    setIsSuccess(false);
+
+    try {
+      // Supabase Insert to contact_messages table
+      const { error } = await supabase
+        .from("contact_messages")
+        .insert([
+          {
+            nombre: formData.name,
+            empresa: formData.company,
+            email: formData.email,
+            mensaje: formData.message
+          }
+        ]);
+
+      if (error) throw error;
+      
+      setIsSuccess(true);
+      setFormData({ name: "", company: "", email: "", message: "" }); // Clear form
+      
+      // Auto-hide success message after 5 seconds
+      setTimeout(() => {
+        setIsSuccess(false);
+      }, 5000);
+
+    } catch (error: any) {
+      console.error("Error al enviar el formulario:", error);
+      setErrorMsg("No pudimos enviar tu mensaje. Por favor revisa tu conexión o intenta mediante WhatsApp.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contacto" className="py-24 bg-white relative scroll-mt-24">
       {/* Decorative background element */}
@@ -75,61 +132,104 @@ export default function ContactSection() {
           {/* Right Column: Contact Form */}
           <div className="bg-white rounded-2xl p-8 border border-zinc-100 shadow-xl shadow-zinc-200/50">
             <h4 className="text-xl font-bold text-brand-dark mb-6">Envíanos un mensaje</h4>
-            <form className="space-y-6">
-              <div className="space-y-4">
+            
+            {isSuccess ? (
+              <div className="bg-brand-green/10 border border-brand-green text-brand-green p-6 rounded-xl flex flex-col items-center justify-center text-center space-y-3 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <CheckCircle2 size={48} strokeWidth={1.5} />
                 <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-brand-slate mb-1">
-                    Nombre Completo
-                  </label>
-                  <input 
-                    type="text" 
-                    id="name" 
-                    placeholder="Ej. Juan Pérez"
-                    className="w-full px-4 py-3 rounded-md bg-zinc-50 border border-zinc-200 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue transition-colors"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="company" className="block text-sm font-semibold text-brand-slate mb-1">
-                    Empresa
-                  </label>
-                  <input 
-                    type="text" 
-                    id="company" 
-                    placeholder="AcmeCorp SAC"
-                    className="w-full px-4 py-3 rounded-md bg-zinc-50 border border-zinc-200 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue transition-colors"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-brand-slate mb-1">
-                    Correo Electrónico
-                  </label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    placeholder="juan@empresa.com"
-                    className="w-full px-4 py-3 rounded-md bg-zinc-50 border border-zinc-200 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue transition-colors"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-brand-slate mb-1">
-                    Mensaje o Requerimiento
-                  </label>
-                  <textarea 
-                    id="message" 
-                    rows={4}
-                    placeholder="¿En qué te podemos ayudar?"
-                    className="w-full px-4 py-3 rounded-md bg-zinc-50 border border-zinc-200 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue transition-colors resize-none"
-                  ></textarea>
+                  <h5 className="font-bold text-lg">¡Gracias! Hemos recibido tu mensaje.</h5>
+                  <p className="text-sm mt-1 opacity-90">Un asesor de A&SO se comunicará contigo al correo proporcionado en breve.</p>
                 </div>
               </div>
-              <button 
-                type="button"
-                className="w-full bg-brand-orange text-white py-4 rounded-md font-bold tracking-wide shadow-md hover:bg-brand-orange/90 transition-all flex items-center justify-center gap-2 group"
-              >
-                <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                Enviar Mensaje
-              </button>
-            </form>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-semibold text-brand-slate mb-1">
+                      Nombre Completo <span className="text-brand-orange">*</span>
+                    </label>
+                    <input 
+                      type="text" 
+                      id="name" 
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="Ej. Juan Pérez"
+                      className="w-full px-4 py-3 rounded-md bg-zinc-50 border border-zinc-200 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue transition-colors disabled:opacity-50"
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="company" className="block text-sm font-semibold text-brand-slate mb-1">
+                      Empresa
+                    </label>
+                    <input 
+                      type="text" 
+                      id="company" 
+                      value={formData.company}
+                      onChange={handleChange}
+                      placeholder="AcmeCorp SAC"
+                      className="w-full px-4 py-3 rounded-md bg-zinc-50 border border-zinc-200 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue transition-colors disabled:opacity-50"
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-semibold text-brand-slate mb-1">
+                      Correo Electrónico <span className="text-brand-orange">*</span>
+                    </label>
+                    <input 
+                      type="email" 
+                      id="email" 
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="juan@empresa.com"
+                      className="w-full px-4 py-3 rounded-md bg-zinc-50 border border-zinc-200 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue transition-colors disabled:opacity-50"
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-semibold text-brand-slate mb-1">
+                      Mensaje o Requerimiento <span className="text-brand-orange">*</span>
+                    </label>
+                    <textarea 
+                      id="message" 
+                      rows={4}
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      placeholder="¿En qué te podemos ayudar?"
+                      className="w-full px-4 py-3 rounded-md bg-zinc-50 border border-zinc-200 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue transition-colors resize-none disabled:opacity-50"
+                      disabled={isSubmitting}
+                    ></textarea>
+                  </div>
+                </div>
+
+                {errorMsg && (
+                  <div className="text-red-500 text-sm font-medium bg-red-50 p-3 rounded-md border border-red-100">
+                    {errorMsg}
+                  </div>
+                )}
+
+                <button 
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-brand-orange text-white py-4 rounded-md font-bold tracking-wide shadow-md hover:bg-brand-orange/90 transition-all flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      Enviando...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      Enviar Mensaje
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
           </div>
 
         </div>
