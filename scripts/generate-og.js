@@ -20,7 +20,7 @@ async function generateAssets() {
         width: 1200,
         height: 630,
         channels: 4,
-        background: { r: 255, g: 255, b: 255, alpha: 1 }
+        background: { r: 0, g: 100, b: 137, alpha: 1 } // #006489 corporativo
       }
     })
     .composite([
