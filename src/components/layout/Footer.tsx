@@ -30,22 +30,22 @@ export default function Footer() {
             <h4 className="text-white font-bold text-lg mb-6 tracking-wide">Servicios</h4>
             <ul className="space-y-4">
               <li>
-                <Link href="#" className="text-sm font-medium hover:text-brand-orange transition-colors">
+                <Link href="#servicios" className="text-sm font-medium hover:text-brand-orange transition-colors">
                   Gestión Ambiental
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-sm font-medium hover:text-brand-orange transition-colors">
+                <Link href="#servicios" className="text-sm font-medium hover:text-brand-orange transition-colors">
                   Seguridad Ocupacional
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-sm font-medium hover:text-brand-orange transition-colors">
+                <Link href="#servicios" className="text-sm font-medium hover:text-brand-orange transition-colors">
                   Monitoreos
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-sm font-medium hover:text-brand-orange transition-colors">
+                <Link href="#servicios" className="text-sm font-medium hover:text-brand-orange transition-colors">
                   Capacitaciones
                 </Link>
               </li>
@@ -57,12 +57,12 @@ export default function Footer() {
             <h4 className="text-white font-bold text-lg mb-6 tracking-wide">Empresa</h4>
             <ul className="space-y-4">
               <li>
-                <Link href="#" className="text-sm font-medium hover:text-brand-orange transition-colors">
+                <Link href="#nosotros" className="text-sm font-medium hover:text-brand-orange transition-colors">
                   Nosotros
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-sm font-medium hover:text-brand-orange transition-colors">
+                <Link href="#proyectos" className="text-sm font-medium hover:text-brand-orange transition-colors">
                   Proyectos
                 </Link>
               </li>
@@ -72,7 +72,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/intranet" className="text-sm font-medium text-brand-orange hover:text-white transition-colors flex items-center gap-1">
+                <Link 
+                  href="/intranet" 
+                  prefetch={false} 
+                  title="Próximamente" 
+                  className="text-sm font-medium text-brand-orange hover:text-white transition-colors flex items-center gap-1"
+                >
                   Acceso Empleados &rarr;
                 </Link>
               </li>
