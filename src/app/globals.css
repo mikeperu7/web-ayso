@@ -2,17 +2,20 @@
 
 @theme {
   --font-sans: var(--font-inter);
+  --font-heading: var(--font-space-grotesk);
   
-  /* Color Palette */
+  /* Color Palette - Premium Industrial */
+  --color-accent: #F5A623;
+  --color-accent-hover: #D9880F;
+  --color-background-dark: #0A0A0A;
+  --color-surface-dark: #121212;
+  --color-border-dark: #2B3036;
+
+  /* Legacy Colors (Keep for backwards compatibility if needed during refactor) */
   --color-brand-blue: #006489;
   --color-brand-green: #438727;
   --color-brand-orange: #BB4A05;
   --color-brand-slate: #495669;
-
-  /* Secondary Palette */
-  --color-brand-dark: #2B3036;
-  --color-brand-gold: #B4975A;
-  --color-brand-silver: #8A8D8F;
 
   --animate-marquee: marquee 40s linear infinite;
 
@@ -27,8 +30,8 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #000000;
+  --background: #0A0A0A;
+  --foreground: #F5F5F5;
 }
 
 html {

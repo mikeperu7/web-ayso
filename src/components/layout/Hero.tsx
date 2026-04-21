@@ -4,55 +4,53 @@ import FieldWorkCarousel from "./FieldWorkCarousel";
 
 export default function Hero() {
   return (
-    <section id="inicio" className="relative min-h-[90vh] flex items-center justify-center pt-24 overflow-hidden bg-white scroll-mt-24">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-blue/5 -skew-x-12 translate-x-1/4 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-green/5 rounded-full blur-3xl pointer-events-none" />
+    <section id="inicio" className="relative min-h-[95vh] flex items-center justify-center overflow-hidden bg-background-dark scroll-mt-24">
+      {/* Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        src="/videos/hero-bg.mp4"
+      />
+      {/* Dark Overlay for contrast */}
+      <div className="absolute inset-0 bg-black/60 z-10" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full pt-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div className="flex flex-col space-y-8 text-center lg:text-left">
-            <div className="inline-flex items-center self-center lg:self-start bg-brand-blue/10 px-4 py-1.5 rounded-full text-brand-blue text-sm font-bold tracking-tight">
-              Cumplimiento Normativo & Sostenibilidad
+            <div className="inline-flex items-center self-center lg:self-start bg-white/5 backdrop-blur-md border border-white/10 px-5 py-2 rounded-full text-white text-xs font-bold tracking-widest uppercase">
+              Firma Top en Sostenibilidad Integral
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-brand-dark leading-[1.1] tracking-tight">
-              Consultoría y Asesoría en <span className="text-brand-blue">Ambiente</span> & <span className="text-brand-orange text-shadow-sm">Seguridad Ocupacional</span>.
+            <h1 className="text-4xl md:text-6xl lg:text-[4rem] font-heading font-bold text-white leading-[1.05] tracking-tight">
+              Consultoría en <span className="text-accent">Ambiente</span> & Seguridad Ocupacional.
             </h1>
             
-            <p className="text-lg md:text-xl text-brand-slate font-medium max-w-2xl mx-auto lg:mx-0 leading-relaxed italic border-l-4 border-brand-green pl-6 py-2">
-              "El éxito es hacer más por la naturaleza, de lo que ella hace por ti."
+            <p className="text-lg md:text-xl text-zinc-300 font-medium max-w-2xl mx-auto lg:mx-0 leading-relaxed py-2">
+              Llevando el estándar corporativo a otro nivel. Soluciones ágiles con rigor técnico para proteger su capital más valioso y respaldar sus operaciones empresariales.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 pt-4 justify-center lg:justify-start">
               <Link 
                 href="#contacto" 
-                className="w-full sm:w-auto bg-brand-orange text-white px-8 py-4 rounded-sm font-bold tracking-wide text-lg shadow-xl hover:bg-brand-orange/90 transition-all flex items-center justify-center gap-2 group shadow-brand-orange/20"
+                className="w-full sm:w-auto bg-accent text-white px-8 py-4 rounded font-bold tracking-wide text-lg hover:bg-accent-hover transition-all flex items-center justify-center gap-2 group"
               >
-                Solicitar Cotización
+                Agendar Evaluación Estratégica
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-              
-              <Link 
-                href="#" 
-                className="w-full sm:w-auto border-2 border-brand-blue text-brand-blue px-8 py-4 rounded-sm font-bold tracking-wide text-lg hover:bg-brand-blue hover:text-white transition-all flex items-center justify-center gap-2"
-              >
-                <Download size={20} />
-                Descargar Brochure
               </Link>
             </div>
           </div>
 
-          {/* Visual Element / Auto-Slider */}
-          <div className="hidden lg:block relative group">
-            <FieldWorkCarousel />
-            
-            {/* Floating Trust Badge */}
-            <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-lg shadow-2xl border-l-8 border-brand-orange z-30 max-w-[200px] transition-transform duration-500 group-hover:-translate-y-2">
-              <div className="text-brand-orange font-black text-3xl leading-none">0</div>
-              <div className="text-brand-dark font-bold text-sm uppercase leading-tight mt-1">Accidentes Laborales Reportados</div>
-            </div>
+          {/* Complementary Section / Empty space for breathing room */}
+          <div className="hidden lg:flex justify-end relative">
+             {/* Retiramos el contador genérico y optamos por minimalismo o un feature sutil */}
+             <div className="w-full max-w-sm rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl relative">
+               <FieldWorkCarousel />
+               <div className="absolute inset-0 border border-white/20 rounded-[2rem] pointer-events-none mix-blend-overlay"></div>
+             </div>
           </div>
         </div>
       </div>

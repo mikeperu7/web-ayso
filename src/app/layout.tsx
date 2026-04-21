@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import FloatingWhatsApp from "@/components/ui/FloatingWhatsApp";
 
@@ -8,13 +8,18 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
-  title: "AYSO SAC - Ambiente & Seguridad Ocupacional | Consultoría y Asesoría",
-  description: "Optimizamos tus recursos con respuestas ágiles y soluciones integrales en Gestión Ambiental, Seguridad Ocupacional y Capacitaciones en Ate, Lima.",
+  title: "AYSO SAC - Ambiente & Seguridad Ocupacional | Consultoría Premium",
+  description: "Firma especialista en Gestión Ambiental, Seguridad Ocupacional y Capacitaciones en Lima.",
   openGraph: {
-    title: "AYSO SAC - Tu Socio en Seguridad Ocupacional y Gestión Ambiental",
-    description: "Optimizamos tus recursos con respuestas ágiles y soluciones integrales en Gestión Ambiental, Seguridad Ocupacional y Capacitaciones en Ate, Lima.",
-    url: "https://web-ayso.vercel.app", // REEMPLAZAR POR TU URL FINAL SI ES OTRA
+    title: "AYSO SAC - Especialistas en Seguridad y Ambiente",
+    description: "Firma especialista en Gestión Ambiental, Seguridad Ocupacional y Capacitaciones en Lima.",
+    url: "https://web-ayso.vercel.app",
     siteName: "AYSO SAC",
     locale: "es_PE",
     type: "website",
@@ -23,7 +28,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "AYSO SAC - Consultoría en Ambiente y Seguridad",
+        alt: "AYSO SAC - Consultoría Premium",
       },
     ],
   },
@@ -42,9 +47,9 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${inter.variable} h-full antialiased`}
+      className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans overflow-x-hidden">
+      <body className="min-h-full flex flex-col font-sans overflow-x-hidden bg-[#0A0A0A] text-[#A3A3A3]">
         {children}
         <FloatingWhatsApp />
       </body>
