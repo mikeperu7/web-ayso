@@ -4,22 +4,23 @@
   --font-sans: var(--font-inter);
   --font-heading: var(--font-outfit);
   
-  /* Color Palette - V3 Autoridad Lumínica */
+  /* Color Palette - V4 The High-End Experience */
   --color-accent: #0F4C81; /* Sapphire Blue */
   --color-accent-hover: #0a355c;
-  --color-accent-secondary: #059669; /* Emerald */
+  --color-accent-secondary: #10B981; /* Emerald Glow */
   
-  --color-background-light: #FAFAFA; /* Alabaster */
-  --color-surface-light: #FFFFFF;
-  --color-border-light: #E2E8F0; /* Slate 200 */
-  --color-foreground-light: #1E293B; /* Midnight Slate */
+  /* Backgrounds & Bento Surfaces */
+  --color-background-master: #F8F9FA; /* Alabaster Pearl */
+  --color-surface-slate: #0F172A; /* Slate Deep (Dark Bento Boxes) */
+  --color-surface-white: #FFFFFF; /* Light Bento Boxes */
+  
+  --color-border-bento: rgba(0,0,0,0.05); /* Soft border for light elements */
+  
+  /* Text */
+  --color-foreground-dark: #000000;
+  --color-foreground-slate: #1E293B; /* Midnight Slate */
   --color-foreground-muted: #64748B; /* Slate 500 */
-
-  /* Legacy Colors */
-  --color-brand-blue: #006489;
-  --color-brand-green: #438727;
-  --color-brand-orange: #BB4A05;
-  --color-brand-slate: #495669;
+  --color-foreground-light: #FFFFFF; /* Over dark bento boxes */
 
   --animate-marquee: marquee 40s linear infinite;
 
@@ -34,7 +35,7 @@
 }
 
 :root {
-  --background: #FAFAFA;
+  --background: #F8F9FA;
   --foreground: #1E293B;
 }
 
@@ -46,4 +47,5 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
