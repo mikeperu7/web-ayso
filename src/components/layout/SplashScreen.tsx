@@ -32,25 +32,25 @@ export default function SplashScreen() {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-[#0A0A0A] transition-opacity duration-700 pointer-events-none ${
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-background-light transition-opacity duration-700 pointer-events-none ${
         stage === "exiting" ? "opacity-0" : "opacity-100"
       }`}
     >
       <div className="relative flex flex-col items-center">
-        {/* Usaremos un enfoque puramente tipográfico estilizado si no tenemos SVG, o un logo textual como se planeó */}
+        {/* Logo Textual Elegante */}
         <h1 
-          className={`font-heading text-6xl md:text-8xl font-bold tracking-tighter transition-all duration-1000 ease-out
-            ${stage === "drawing" ? "text-transparent stroke-text" : "text-white scale-95"}`}
+          className={`font-heading text-6xl md:text-8xl font-black tracking-tighter transition-all duration-1000 ease-out
+            ${stage === "drawing" ? "text-transparent stroke-text" : "text-accent scale-95 drop-shadow-sm"}`}
         >
           AYSO
         </h1>
         <div 
-           className={`h-[2px] bg-accent mt-4 transition-all duration-700 ease-in-out
-           ${stage === "drawing" ? "w-0 opacity-0" : "w-full opacity-100"}`} 
+           className={`h-[3px] bg-accent mt-4 transition-all duration-700 ease-in-out
+           ${stage === "drawing" ? "w-0 opacity-0" : "w-full opacity-100 rounded-full"}`} 
         />
         <style dangerouslySetInnerHTML={{__html: `
           .stroke-text {
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+            -webkit-text-stroke: 1.5px rgba(15, 76, 129, 0.4);
           }
         `}} />
       </div>

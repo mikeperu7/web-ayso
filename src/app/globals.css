@@ -2,16 +2,20 @@
 
 @theme {
   --font-sans: var(--font-inter);
-  --font-heading: var(--font-space-grotesk);
+  --font-heading: var(--font-outfit);
   
-  /* Color Palette - Premium Industrial */
-  --color-accent: #F5A623;
-  --color-accent-hover: #D9880F;
-  --color-background-dark: #0A0A0A;
-  --color-surface-dark: #121212;
-  --color-border-dark: #2B3036;
+  /* Color Palette - V3 Autoridad Lumínica */
+  --color-accent: #0F4C81; /* Sapphire Blue */
+  --color-accent-hover: #0a355c;
+  --color-accent-secondary: #059669; /* Emerald */
+  
+  --color-background-light: #FAFAFA; /* Alabaster */
+  --color-surface-light: #FFFFFF;
+  --color-border-light: #E2E8F0; /* Slate 200 */
+  --color-foreground-light: #1E293B; /* Midnight Slate */
+  --color-foreground-muted: #64748B; /* Slate 500 */
 
-  /* Legacy Colors (Keep for backwards compatibility if needed during refactor) */
+  /* Legacy Colors */
   --color-brand-blue: #006489;
   --color-brand-green: #438727;
   --color-brand-orange: #BB4A05;
@@ -30,8 +34,8 @@
 }
 
 :root {
-  --background: #0A0A0A;
-  --foreground: #F5F5F5;
+  --background: #FAFAFA;
+  --foreground: #1E293B;
 }
 
 html {

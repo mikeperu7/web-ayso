@@ -5,24 +5,26 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-surface-dark text-white/80 pt-16 pb-8 border-t border-border-dark">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-background-light text-foreground-muted pt-16 pb-8 border-t border-border-light relative overflow-hidden">
+      {/* Decorative Accent Top Border */}
+      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-accent to-accent-secondary opacity-80" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           
           {/* Brand Info */}
           <div className="md:col-span-2 space-y-6">
             <Link href="/" className="inline-block">
-              {/* Estilizamos textualmente el logo como indicó el plan para el rediseño "Minimalista" en dark mode si es necesario, o mantenemos la imagen */}
-              <div className="font-heading font-black text-3xl tracking-tighter text-white mr-2 inline-block">AYSO</div>
+              <div className="font-heading font-black text-3xl tracking-tighter text-foreground-light mr-2 inline-block">AYSO</div>
             </Link>
-            <p className="text-sm text-zinc-400 font-medium max-w-sm leading-relaxed">
+            <p className="text-sm font-medium max-w-sm leading-relaxed text-foreground-muted/90">
               Firma especialista en ingeniería y servicios ambientales. Nuestra consultoría optimiza sus recursos con agilidad y rigor corporativo.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-bold text-lg mb-6 tracking-wide font-heading">Servicios</h4>
+            <h4 className="text-foreground-light font-bold text-lg mb-6 tracking-wide font-heading">Servicios</h4>
             <ul className="space-y-4">
               <li>
                 <Link href="#servicios" className="text-sm font-medium hover:text-accent transition-colors">
@@ -49,7 +51,7 @@ export default function Footer() {
 
           {/* Contact (Digital First) */}
           <div>
-            <h4 className="text-white font-bold text-lg mb-6 tracking-wide font-heading">Hablemos</h4>
+            <h4 className="text-foreground-light font-bold text-lg mb-6 tracking-wide font-heading">Hablemos</h4>
             <ul className="space-y-4">
               <li>
                 <Link href="#contacto" className="text-sm font-medium hover:text-accent transition-colors">
@@ -62,7 +64,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="mailto:estrategia@ayso.com.pe" className="text-sm font-medium hover:text-accent transition-colors text-zinc-400">
+                <a href="mailto:estrategia@ayso.com.pe" className="text-sm font-medium hover:text-accent transition-colors">
                   consultoria@ayso.com.pe
                 </a>
               </li>
@@ -70,7 +72,7 @@ export default function Footer() {
                 <Link 
                   href="/intranet" 
                   prefetch={false} 
-                  className="text-xs font-semibold text-accent/80 hover:text-accent transition-colors flex items-center gap-1 uppercase tracking-wider"
+                  className="text-xs font-bold text-accent hover:text-accent-hover transition-colors flex items-center gap-1 uppercase tracking-wider"
                 >
                   Acceso Corporativo &rarr;
                 </Link>
@@ -81,13 +83,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-zinc-500">
+        <div className="border-t border-border-light pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-semibold text-foreground-muted/80">
           <p>
             Copyright &copy; {currentYear} A&SO (Ambiente & Seguridad Ocupacional S.A.C.). Todos los derechos reservados.
           </p>
           <div className="flex gap-6">
-            <Link href="#" className="hover:text-white transition-colors">Aviso Legal</Link>
-            <Link href="#" className="hover:text-white transition-colors">Privacidad</Link>
+            <Link href="#" className="hover:text-accent transition-colors">Aviso Legal</Link>
+            <Link href="#" className="hover:text-accent transition-colors">Privacidad</Link>
           </div>
         </div>
       </div>
